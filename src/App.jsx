@@ -6,7 +6,7 @@ import { ThemeProvider } from 'next-themes';
 
 // Import page components
 import Dashboard from './pages/Dashboard';
-import CreateItinerary from './pages/CreateItinerary';
+import CreateItinerary from './pages/ItineraryBuilder';
 import ItineraryDetails from './pages/ItineraryDetails';
 import Profile from './pages/Profile';
 
