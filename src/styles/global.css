@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Cyberpunk Color Palette */
+  --cyber-primary: #00ffff;
+  --cyber-secondary: #ff00ff;
+  --cyber-accent: #ffff00;
+  --cyber-warning: #ff6b00;
+  --cyber-danger: #ff0040;
+  --cyber-success: #00ff88;
+  --cyber-info: #0080ff;
+  
+  /* Neon Variants */
+  --neon-cyan: #00ffff;
+  --neon-magenta: #ff00ff;
+  --neon-yellow: #ffff00;
+  --neon-green: #00ff88;
+  --neon-pink: #ff0080;
+  --neon-blue: #0080ff;
+  --neon-orange: #ff6b00;
+  
+  /* Background Colors */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #1a1a2e;
+  --bg-tertiary: #16213e;
+  --bg-card: #1e1e2e;
+  --bg-overlay: #0f0f23;
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #b4b4b4;
+  --text-muted: #666666;
+  --text-accent: #00ffff;
+  
+  /* Border Colors */
+  --border-primary: #333366;
+  --border-accent: #00ffff;
+  --border-glow: #00ffff66;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%);
+  --gradient-secondary: linear-gradient(135deg, #ff00ff 0%, #ffff00 100%);
+  --gradient-dark: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+  --gradient-card: linear-gradient(135deg, #1e1e2e 0%, #16213e 100%);
+  
+  /* Shadows */
+  --shadow-neon: 0 0 10px var(--cyber-primary), 0 0 20px var(--cyber-primary), 0 0 30px var(--cyber-primary);
+  --shadow-neon-pink: 0 0 10px var(--cyber-secondary), 0 0 20px var(--cyber-secondary), 0 0 30px var(--cyber-secondary);
+  --shadow-card: 0 4px 20px rgba(0, 255, 255, 0.1);
+  --shadow-button: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 25% 25%, #00ffff0a 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, #ff00ff0a 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Cyberpunk Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px var(--cyber-primary);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--cyber-primary);
+  text-shadow: 0 0 20px var(--cyber-primary);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  color: var(--cyber-secondary);
+  text-shadow: 0 0 15px var(--cyber-secondary);
+}
+
+/* Cyberpunk Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 4px;
+  box-shadow: inset 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyber-primary);
+  box-shadow: 0 0 10px var(--cyber-primary);
+}
+
+/* Cyberpunk Selection */
+::selection {
+  background: var(--cyber-primary);
+  color: var(--bg-primary);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--cyber-primary);
+  color: var(--bg-primary);
+  text-shadow: none;
+}
+
+/* Cyberpunk Animations */
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 5px var(--cyber-primary), 0 0 10px var(--cyber-primary), 0 0 15px var(--cyber-primary);
+  }
+  50% {
+    text-shadow: 0 0 10px var(--cyber-primary), 0 0 20px var(--cyber-primary), 0 0 30px var(--cyber-primary);
+  }
+}
+
+@keyframes neonFlicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 5px var(--cyber-primary), 0 0 10px var(--cyber-primary), 0 0 15px var(--cyber-primary);
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: var(--cyber-primary);
+    box-shadow: 0 0 5px var(--cyber-primary);
+  }
+  50% {
+    border-color: var(--cyber-secondary);
+    box-shadow: 0 0 15px var(--cyber-secondary);
+  }
+}
+
+@keyframes backgroundShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes dataStream {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* Utility Classes */
+.cyber-glow {
+  text-shadow: var(--shadow-neon);
+}
+
+.cyber-glow-pink {
+  text-shadow: var(--shadow-neon-pink);
+}
+
+.cyber-border {
+  border: 1px solid var(--cyber-primary);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.cyber-border-animated {
+  border: 1px solid var(--cyber-primary);
+  animation: borderGlow 2s ease-in-out infinite alternate;
+}
+
+.cyber-bg-card {
+  background: var(--gradient-card);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-card);
+}
+
+.cyber-gradient-text {
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cyber-button {
+  background: transparent;
+  border: 2px solid var(--cyber-primary);
+  color: var(--cyber-primary);
+  padding: 0.75rem 1.5rem;
+  text-transform: uppercase;
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-button:hover {
+  background: var(--cyber-primary);
+  color: var(--bg-primary);
+  box-shadow: var(--shadow-button);
+  transform: translateY(-2px);
+}
+
+.cyber-button:active {
+  transform: translateY(0);
+}
+
+.cyber-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cyber-button:hover::before {
+  left: 100%;
+}
+
+.cyber-input {
+  background: transparent;
+  border: 2px solid var(--border-primary);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.cyber-input:focus {
+  outline: none;
+  border-color: var(--cyber-primary);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.cyber-input::placeholder {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+}
+
+.cyber-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-primary);
+  opacity: 0.5;
+}
+
+.cyber-card:hover {
+  border-color: var(--cyber-primary);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.neon-pulse {
+  animation: neonPulse 2s ease-in-out infinite alternate;
+}
+
+.neon-flicker {
+  animation: neonFlicker 1.5s infinite linear;
+}
+
+.glitch-effect {
+  animation: glitch 0.3s ease-in-out infinite;
+}
+
+.data-stream {
+  animation: dataStream 3s linear infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  .cyber-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .cyber-input {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Dark mode compatibility */
+.dark {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #1a1a2e;
+  --text-primary: #ffffff;
+  --text-secondary: #b4b4b4;
+}
+
+/* Loading animations */
+.loading-dots::after {
+  content: '';
+  animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+  0%, 20% {
+    content: '.';
+  }
+  40% {
+    content: '..';
+  }
+  60%, 100% {
+    content: '...';
+  }
+}
+
+/* Focus visible for accessibility */
+.focus-visible:focus-visible {
+  outline: 2px solid var(--cyber-primary);
+  outline-offset: 2px;
+}
